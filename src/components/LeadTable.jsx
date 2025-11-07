@@ -56,10 +56,10 @@ const sampleLeads = [
 ];
 
 const statusColors = {
-  Qualified: 'bg-indigo-100 text-indigo-700',
-  Contacted: 'bg-blue-100 text-blue-700',
-  Interested: 'bg-emerald-100 text-emerald-700',
-  'Meeting Booked': 'bg-amber-100 text-amber-700'
+  Qualified: 'bg-indigo-500/20 text-indigo-200 border border-indigo-400/30',
+  Contacted: 'bg-blue-500/20 text-blue-200 border border-blue-400/30',
+  Interested: 'bg-emerald-500/20 text-emerald-200 border border-emerald-400/30',
+  'Meeting Booked': 'bg-amber-500/20 text-amber-200 border border-amber-400/30'
 };
 
 function Badge({ children, color }) {
@@ -69,45 +69,45 @@ function Badge({ children, color }) {
 function RowDetails({ lead }) {
   const s = lead.call.summary;
   return (
-    <div className="px-4 pb-6 pt-2 bg-slate-50/50">
+    <div className="px-4 pb-6 pt-2 bg-white/5 backdrop-blur-sm border-t border-white/10 animate-fade-in">
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        <div className="rounded-lg bg-white p-4 shadow-sm ring-1 ring-slate-200">
-          <h4 className="text-sm font-semibold text-slate-900">Researched Background</h4>
-          <div className="mt-3 space-y-2 text-sm text-slate-700">
-            <p><span className="font-medium">Company:</span> {lead.background.company}</p>
-            <p><span className="font-medium">Person:</span> {lead.background.person}</p>
+        <div className="rounded-xl bg-white/10 backdrop-blur-xl p-4 shadow-sm border border-white/10">
+          <h4 className="text-sm font-semibold text-slate-100">Researched Background</h4>
+          <div className="mt-3 space-y-2 text-sm text-slate-200/90">
+            <p><span className="font-medium text-slate-100">Company:</span> {lead.background.company}</p>
+            <p><span className="font-medium text-slate-100">Person:</span> {lead.background.person}</p>
           </div>
         </div>
-        <div className="rounded-lg bg-white p-4 shadow-sm ring-1 ring-slate-200">
-          <h4 className="text-sm font-semibold text-slate-900">Call Intelligence</h4>
+        <div className="rounded-xl bg-white/10 backdrop-blur-xl p-4 shadow-sm border border-white/10">
+          <h4 className="text-sm font-semibold text-slate-100">Call Intelligence</h4>
           <div className="mt-3 grid grid-cols-1 gap-3 text-sm">
             <div>
-              <div className="font-semibold">Key Pain Points</div>
-              <p className="text-slate-700">{s.pain}</p>
+              <div className="font-semibold text-slate-100">Key Pain Points</div>
+              <p className="text-slate-200/90">{s.pain}</p>
             </div>
             <div>
-              <div className="font-semibold">Budget Discussed</div>
-              <p className="text-slate-700">{s.budget}</p>
+              <div className="font-semibold text-slate-100">Budget Discussed</div>
+              <p className="text-slate-200/90">{s.budget}</p>
             </div>
             <div>
-              <div className="font-semibold">Noted Objections</div>
-              <p className="text-slate-700">{s.objections}</p>
+              <div className="font-semibold text-slate-100">Noted Objections</div>
+              <p className="text-slate-200/90">{s.objections}</p>
             </div>
             <div>
-              <div className="font-semibold">Agreed Next Step</div>
-              <p className="text-slate-700">{s.next}</p>
+              <div className="font-semibold text-slate-100">Agreed Next Step</div>
+              <p className="text-slate-200/90">{s.next}</p>
             </div>
           </div>
         </div>
-        <div className="rounded-lg bg-white p-4 shadow-sm ring-1 ring-slate-200">
-          <h4 className="text-sm font-semibold text-slate-900">Communication Timeline</h4>
+        <div className="rounded-xl bg-white/10 backdrop-blur-xl p-4 shadow-sm border border-white/10">
+          <h4 className="text-sm font-semibold text-slate-100">Communication Timeline</h4>
           <ol className="mt-3 space-y-3">
             {lead.timeline.map((t, idx) => (
-              <li key={idx} className="flex items-center gap-3 text-sm text-slate-700">
-                {t.type === 'call' && <PhoneCall className="h-4 w-4 text-indigo-600" />}
-                {t.type === 'email' && <Mail className="h-4 w-4 text-blue-600" />}
-                <span className="font-medium">{t.label}</span>
-                <span className="ml-auto text-xs text-slate-500">{t.when}</span>
+              <li key={idx} className="flex items-center gap-3 text-sm text-slate-200/90">
+                {t.type === 'call' && <PhoneCall className="h-4 w-4 text-indigo-300" />}
+                {t.type === 'email' && <Mail className="h-4 w-4 text-blue-300" />}
+                <span className="font-medium text-slate-100">{t.label}</span>
+                <span className="ml-auto text-xs text-slate-400">{t.when}</span>
               </li>
             ))}
           </ol>
@@ -131,36 +131,36 @@ export default function LeadTable() {
   }, [query, stage]);
 
   return (
-    <section className="rounded-xl bg-white shadow-sm ring-1 ring-black/5 overflow-hidden">
-      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between px-4 py-3 border-b border-slate-100">
-        <h3 className="text-sm font-medium text-slate-900">Lead Intelligence</h3>
+    <section className="rounded-2xl bg-white/10 backdrop-blur-xl shadow-sm border border-white/10 overflow-hidden">
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between px-4 py-3 border-b border-white/10">
+        <h3 className="text-sm font-medium text-slate-100">Lead Intelligence</h3>
         <div className="flex items-center gap-2">
           <div className="relative">
-            <Search className="absolute left-2 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" />
+            <Search className="absolute left-2 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-300/70" />
             <input
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               placeholder="Search by name or company"
-              className="pl-8 pr-3 py-2 w-56 rounded-md border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-purple-500"
+              className="pl-8 pr-3 py-2 w-56 rounded-md border border-white/10 bg-white/5 text-sm text-slate-100 placeholder:text-slate-300/60 focus:outline-none focus:ring-2 focus:ring-purple-500"
             />
           </div>
           <div className="relative">
-            <Filter className="absolute left-2 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" />
+            <Filter className="absolute left-2 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-300/70" />
             <select
               value={stage}
               onChange={(e) => setStage(e.target.value)}
-              className="appearance-none pl-8 pr-8 py-2 w-48 rounded-md border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-purple-500"
+              className="appearance-none pl-8 pr-8 py-2 w-48 rounded-md border border-white/10 bg-white/5 text-sm text-slate-100 focus:outline-none focus:ring-2 focus:ring-purple-500"
             >
               {['All','Qualified','Contacted','Interested','Meeting Booked'].map((s) => (
-                <option key={s} value={s}>{s}</option>
+                <option key={s} value={s} className="bg-slate-900">{s}</option>
               ))}
             </select>
           </div>
         </div>
       </div>
 
-      <div className="divide-y divide-slate-100">
-        <div className="grid grid-cols-12 gap-2 px-4 py-2 text-xs uppercase tracking-wide text-slate-500 bg-slate-50">
+      <div className="divide-y divide-white/10">
+        <div className="grid grid-cols-12 gap-2 px-4 py-2 text-xs uppercase tracking-wide text-slate-300/80 bg-white/5">
           <div className="col-span-4">Lead</div>
           <div className="col-span-2">Stage</div>
           <div className="col-span-2">Score</div>
@@ -173,25 +173,25 @@ export default function LeadTable() {
             <div key={lead.id} className="">
               <button
                 onClick={() => setOpen((o) => ({ ...o, [lead.id]: !isOpen }))}
-                className="w-full grid grid-cols-12 gap-2 px-4 py-3 items-center hover:bg-slate-50"
+                className="w-full grid grid-cols-12 gap-2 px-4 py-3 items-center hover:bg-white/5 transition-colors"
               >
                 <div className="col-span-4 flex items-center gap-3 text-left">
                   {isOpen ? <ChevronDown className="h-4 w-4 text-slate-400" /> : <ChevronRight className="h-4 w-4 text-slate-400" />}
                   <div>
-                    <div className="text-sm font-medium text-slate-900">{lead.name}</div>
-                    <div className="text-xs text-slate-500">{lead.company}</div>
+                    <div className="text-sm font-medium text-slate-100">{lead.name}</div>
+                    <div className="text-xs text-slate-300/80">{lead.company}</div>
                   </div>
                 </div>
                 <div className="col-span-2">
                   <Badge color={statusColors[lead.stage]}>{lead.stage}</Badge>
                 </div>
-                <div className="col-span-2 text-slate-900 text-sm flex items-center gap-1">
-                  <CheckCircle2 className="h-4 w-4 text-emerald-500" /> {lead.score}
+                <div className="col-span-2 text-slate-100 text-sm flex items-center gap-1">
+                  <CheckCircle2 className="h-4 w-4 text-emerald-300" /> {lead.score}
                 </div>
-                <div className="col-span-2 text-slate-900 text-sm flex items-center gap-1">
-                  <CircleDollarSign className="h-4 w-4 text-amber-500" /> ${lead.value.toLocaleString()}
+                <div className="col-span-2 text-slate-100 text-sm flex items-center gap-1">
+                  <CircleDollarSign className="h-4 w-4 text-amber-300" /> ${lead.value.toLocaleString()}
                 </div>
-                <div className="col-span-2 text-right text-sm text-slate-600">{lead.lastTouch}</div>
+                <div className="col-span-2 text-right text-sm text-slate-300/90">{lead.lastTouch}</div>
               </button>
               {isOpen && <RowDetails lead={lead} />}
             </div>

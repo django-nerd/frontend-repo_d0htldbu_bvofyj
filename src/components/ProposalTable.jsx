@@ -8,33 +8,33 @@ const proposals = [
 ];
 
 const statusBadge = {
-  Sent: 'bg-slate-200 text-slate-700',
-  Viewed: 'bg-blue-100 text-blue-700',
-  Accepted: 'bg-emerald-100 text-emerald-700',
-  Declined: 'bg-rose-100 text-rose-700'
+  Sent: 'bg-slate-500/20 text-slate-200 border border-slate-400/30',
+  Viewed: 'bg-blue-500/20 text-blue-200 border border-blue-400/30',
+  Accepted: 'bg-emerald-500/20 text-emerald-200 border border-emerald-400/30',
+  Declined: 'bg-rose-500/20 text-rose-200 border border-rose-400/30'
 };
 
 export default function ProposalTable() {
   const total = useMemo(() => proposals.reduce((s, p) => s + p.value, 0), []);
 
   return (
-    <section className="rounded-xl bg-white shadow-sm ring-1 ring-black/5 overflow-hidden">
-      <div className="flex items-center justify-between px-4 py-3 border-b border-slate-100">
-        <h3 className="text-sm font-medium text-slate-900">Proposal Status</h3>
-        <div className="text-xs text-slate-500">Total pipeline value: ${total.toLocaleString()}</div>
+    <section className="rounded-2xl bg-white/10 backdrop-blur-xl shadow-sm border border-white/10 overflow-hidden">
+      <div className="flex items-center justify-between px-4 py-3 border-b border-white/10">
+        <h3 className="text-sm font-medium text-slate-100">Proposal Status</h3>
+        <div className="text-xs text-slate-300/80">Total pipeline value: ${total.toLocaleString()}</div>
       </div>
-      <div className="divide-y divide-slate-100">
-        <div className="grid grid-cols-12 gap-2 px-4 py-2 text-xs uppercase tracking-wide text-slate-500 bg-slate-50">
+      <div className="divide-y divide-white/10">
+        <div className="grid grid-cols-12 gap-2 px-4 py-2 text-xs uppercase tracking-wide text-slate-300/80 bg-white/5">
           <div className="col-span-5">Client</div>
           <div className="col-span-3">Value</div>
           <div className="col-span-2">Sent</div>
           <div className="col-span-2 text-right">Status</div>
         </div>
         {proposals.map((p) => (
-          <div key={p.id} className="grid grid-cols-12 gap-2 px-4 py-3 items-center">
-            <div className="col-span-5 text-sm text-slate-900">{p.client}</div>
-            <div className="col-span-3 text-sm text-slate-900">${p.value.toLocaleString()}</div>
-            <div className="col-span-2 text-sm text-slate-700">{p.sent}</div>
+          <div key={p.id} className="grid grid-cols-12 gap-2 px-4 py-3 items-center hover:bg-white/5 transition-colors">
+            <div className="col-span-5 text-sm text-slate-100">{p.client}</div>
+            <div className="col-span-3 text-sm text-slate-100">${p.value.toLocaleString()}</div>
+            <div className="col-span-2 text-sm text-slate-300/90">{p.sent}</div>
             <div className="col-span-2 text-right">
               <span className={`px-2 py-0.5 text-xs rounded-full ${statusBadge[p.status]}`}>{p.status}</span>
             </div>

@@ -40,24 +40,24 @@ export default function LiveFeed() {
   }, [events]);
 
   return (
-    <section className="rounded-xl bg-white shadow-sm ring-1 ring-black/5 overflow-hidden">
-      <div className="flex items-center justify-between px-4 py-3 border-b border-slate-100">
+    <section className="rounded-2xl bg-white/10 backdrop-blur-xl shadow-sm border border-white/10 overflow-hidden">
+      <div className="flex items-center justify-between px-4 py-3 border-b border-white/10">
         <div className="flex items-center gap-2">
-          <div className="h-8 w-8 rounded-lg bg-purple-100 text-purple-600 flex items-center justify-center">
+          <div className="h-8 w-8 rounded-lg bg-purple-500/20 text-purple-300 flex items-center justify-center">
             <Bell className="h-4 w-4" />
           </div>
-          <h3 className="text-sm font-medium text-slate-900">Live Activity & Alerts</h3>
+          <h3 className="text-sm font-medium text-slate-100">Live Activity & Alerts</h3>
         </div>
-        <span className="text-xs text-slate-500">Real-time updates</span>
+        <span className="text-xs text-slate-300/80">Real-time updates</span>
       </div>
-      <div ref={containerRef} className="max-h-72 overflow-auto divide-y divide-slate-100">
+      <div ref={containerRef} className="max-h-72 overflow-auto divide-y divide-white/10">
         {events.map((e) => (
-          <div key={e.id} className="px-4 py-3 flex items-start gap-3">
-            <div className="mt-0.5 h-8 w-8 rounded-lg bg-slate-100 text-slate-700 flex items-center justify-center">
+          <div key={e.id} className="px-4 py-3 flex items-start gap-3 hover:bg-white/5 transition-colors">
+            <div className="mt-0.5 h-8 w-8 rounded-lg bg-white/10 text-slate-200 flex items-center justify-center">
               <e.icon className="h-4 w-4" />
             </div>
             <div className="flex-1">
-              <p className="text-sm text-slate-800">
+              <p className="text-sm text-slate-100">
                 {e.type === 'lead' && '🟢 '}
                 {e.type === 'call' && '📞 '}
                 {e.type === 'meeting' && '✅ '}
@@ -65,7 +65,7 @@ export default function LiveFeed() {
                 {e.type === 'view' && '👀 '}
                 {e.message}
               </p>
-              <div className="text-xs text-slate-500 mt-0.5">{e.time}</div>
+              <div className="text-xs text-slate-400 mt-0.5">{e.time}</div>
             </div>
           </div>
         ))}
